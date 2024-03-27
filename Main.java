@@ -29,31 +29,31 @@ public class Main {
                 switch(i){
                     case 1:
                         if(!A.isEmpty()&&A.peek()==1){
-                            int n = Integer.valueOf(String.valueOf(A.pop()));
+                            int n = A.pop();
                             C.push(n);
                             PrintS(A,B,C);
                         }
                         else if(!B.isEmpty()&&B.peek()==1){
-                            int n = Integer.valueOf(String.valueOf(B.pop()));
+                            int n = B.pop();
                             A.push(n);
                             PrintS(A,B,C);
                         }
                         else if(!C.isEmpty()&&C.peek()==1){
-                            int n = Integer.valueOf(String.valueOf(C.pop()));
+                            int n = C.pop();
                             B.push(n);
                             PrintS(A,B,C);
                         }
                     case 2:
                         if(!A.isEmpty()&&A.peek()==2){
                             if(B.isEmpty()||B.peek()==3){
-                                int n = Integer.valueOf(String.valueOf(A.pop()));
+                                int n = A.pop();
                                 B.push(n);
                                 PrintS(A,B,C);
                             }
                         }
                         else if(!B.isEmpty()&&B.peek()==2){
                             if(C.isEmpty()||C.peek()==3){
-                                int n = Integer.valueOf(String.valueOf(B.pop()));
+                                int n = B.pop();
                                 C.push(n);
                                 PrintS(A,B,C);
                             }
@@ -61,7 +61,7 @@ public class Main {
                     case 3:
                         if(!A.isEmpty()&&A.peek()==3){
                             if(C.isEmpty()){
-                                int n = Integer.valueOf(String.valueOf(A.pop()));
+                                int n = A.pop();
                                 C.push(n);
                                 PrintS(A,B,C);
                             }
