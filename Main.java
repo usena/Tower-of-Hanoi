@@ -1,3 +1,4 @@
+
 import java.util.Stack;
 public class Main {
     public static void PrintS(Stack<Integer> A, Stack<Integer> B, Stack<Integer> C){
@@ -11,7 +12,7 @@ public class Main {
             return 0;
         }
         else{
-            return x.pop();
+            return x.elementAt(n-1);
         }
     }
     public static void main(String[] args) {
@@ -25,41 +26,46 @@ public class Main {
 
         while(C.size()!=3){
             for(int i=1;i<4;i++){
-                if(i==1){
-                    if(A.peek()==1){
-                        int n = Integer.valueOf(String.valueOf(A.pop()));
-                        C.push(n);
-                        PrintS(A,B,C);
-                    }
-                    else if(B.peek()==1){
-                        int n = Integer.valueOf(String.valueOf(B.pop()));
-                        A.push(n);
-                        PrintS(A,B,C);
-                    }
-                    else if(C.peek()==1){
-                        int n = Integer.valueOf(String.valueOf(C.pop()));
-                        B.push(n);
-                        PrintS(A,B,C);
-                    }
-                }
-                else if(i==2){
-                    if(A.peek()==2){
-                        int n = Integer.valueOf(String.valueOf(A.pop()));
-                        B.push(n);
-                        PrintS(A,B,C);
-                    }
-                    else if(B.peek()==2){
-                        int n = Integer.valueOf(String.valueOf(B.pop()));
-                        C.push(n);
-                        PrintS(A,B,C);
-                    }
-                }
-                else if(i==3){
-                    if(A.peek()==3){
-                        int n = Integer.valueOf(String.valueOf(A.pop()));
-                        C.push(n);
-                        PrintS(A,B,C);
-                    }
+                switch(i){
+                    case 1:
+                        if(!A.isEmpty()&&A.peek()==1){
+                            int n = Integer.valueOf(String.valueOf(A.pop()));
+                            C.push(n);
+                            PrintS(A,B,C);
+                        }
+                        else if(!B.isEmpty()&&B.peek()==1){
+                            int n = Integer.valueOf(String.valueOf(B.pop()));
+                            A.push(n);
+                            PrintS(A,B,C);
+                        }
+                        else if(!C.isEmpty()&&C.peek()==1){
+                            int n = Integer.valueOf(String.valueOf(C.pop()));
+                            B.push(n);
+                            PrintS(A,B,C);
+                        }
+                    case 2:
+                        if(!A.isEmpty()&&A.peek()==2){
+                            if(B.isEmpty()||B.peek()==3){
+                                int n = Integer.valueOf(String.valueOf(A.pop()));
+                                B.push(n);
+                                PrintS(A,B,C);
+                            }
+                        }
+                        else if(!B.isEmpty()&&B.peek()==2){
+                            if(C.isEmpty()||C.peek()==3){
+                                int n = Integer.valueOf(String.valueOf(B.pop()));
+                                C.push(n);
+                                PrintS(A,B,C);
+                            }
+                        }
+                    case 3:
+                        if(!A.isEmpty()&&A.peek()==3){
+                            if(C.isEmpty()){
+                                int n = Integer.valueOf(String.valueOf(A.pop()));
+                                C.push(n);
+                                PrintS(A,B,C);
+                            }
+                        }
                 }
             }
         }
